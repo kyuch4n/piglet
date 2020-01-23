@@ -1,1 +1,1 @@
-<h1 align="center">A Language Named Piglet <font size="4">🐽</font></h1>
+<h1 align="center">A Language Named Piglet 🐽</h1>
