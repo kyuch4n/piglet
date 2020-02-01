@@ -1,8 +1,6 @@
-init; # this is a comment
-
-if (fetchError) {
+init;
+if (failure) {
   throw error;
-  return;
+  break;
 }
-
 submit;

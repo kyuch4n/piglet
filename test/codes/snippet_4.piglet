@@ -1,0 +1,5 @@
+init;
+do {
+  aaa;
+} while (failure)
+submit;

@@ -15,24 +15,16 @@ export default class Tokenizer {
     return " \t\n".indexOf(ch) >= 0
   }
 
-  isCommentStart(ch: string): boolean {
-    return ch === "#"
-  }
-
   isPunc(ch: string): boolean {
     return hasEnumValue(Punctuation, ch)
   }
 
   isIdentifierStart(ch: string): boolean {
-    return /[$_a-z\u4e00-\u9fa5]/i.test(ch)
-  }
-
-  isEndOfComment(ch: string): boolean {
-    return ch === "\n"
+    return /[a-z0-9\u4e00-\u9fa5]/i.test(ch)
   }
 
   isEndOfKeyword(ch: string): boolean {
-    return /[^a-z]/.test(ch)
+    return this.isWhiteSpace(ch) || this.isPunc(ch)
   }
 
   isEndOfNode(ch: string): boolean {
@@ -51,20 +43,11 @@ export default class Tokenizer {
     while (!this.inputStream.eof()) {
       const ch = this.inputStream.next()
 
-      /** skip Whitespace */
+      /** Whitespace */
       if (this.isWhiteSpace(ch)) continue
 
-      /** Comment */
-      else if (this.isCommentStart(ch)) {
-        const comment = this.readWhile(this.isEndOfComment).trim()
-        this.tokens.push(new Token("comment", comment))
-      }
-
       /** Punctuation */
-      else if (this.isPunc(ch)) {
-        if (ch !== Punctuation.SEMICOLON)
-          this.tokens.push(new Token("punctuation", ch))
-      }
+      else if (this.isPunc(ch)) this.tokens.push(new Token("punctuation", ch))
 
       /** Identifier */
       else if (this.isIdentifierStart(ch)) {

@@ -3,7 +3,7 @@
 ## An Example
 
 ```piglet
-init; # this is a comment
+init;
 
 if (fetchError) {
   throw error;
@@ -18,7 +18,7 @@ submit;
 ## An Example with Chinese
 
 ```piglet
-初始化; # 这是注释
+初始化;
 
 if (请求出错) {
   出错啦;

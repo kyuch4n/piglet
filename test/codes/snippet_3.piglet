@@ -1,0 +1,9 @@
+if (a) {
+  aaa;
+} else if (b) {
+  bbb;
+} else {
+  ccc;
+}
+
+ddd;

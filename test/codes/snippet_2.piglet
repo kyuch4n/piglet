@@ -1,0 +1,11 @@
+switch (a) {
+  case do1:
+    aaa;
+    break;
+  case 2:
+    bbb;
+  default:
+    ccc;
+}
+
+ddd;

@@ -1,3 +1,4 @@
+import Token from "../tokenizer/Token"
 import Tokenizer from "../tokenizer/Tokenizer"
 
 export default class Parser {
