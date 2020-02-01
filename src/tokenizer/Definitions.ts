@@ -3,6 +3,7 @@ export enum Keyword {
   ELSE = "else",
   DO = "do",
   WHILE = "while",
+  CONTINUE = "continue",
   BREAK = "break",
   SWITCH = "switch",
   CASE = "case",

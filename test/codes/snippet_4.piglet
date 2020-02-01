@@ -2,4 +2,4 @@ init;
 do {
   retry;
 } while (failure)
-submit;
+submit; # this is a comment
