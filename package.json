@@ -1,22 +1,19 @@
 {
   "name": "piglet",
   "version": "1.0.0",
-  "main": "build/index.js",
-  "typings": "build/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "repository": "https://github.com/kyuch4n/piglet",
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "clean": "trash build",
+    "clean": "trash dist",
     "build": "run-s clean && tsc -p tsconfig.json",
     "watch": "run-s clean && run-p \"build -- -w\"",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
     "version": "standard-version"
-  },
-  "engines": {
-    "node": ">=8.9"
   },
   "dependencies": {},
   "devDependencies": {

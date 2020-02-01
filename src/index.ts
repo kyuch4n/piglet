@@ -1,7 +1,3 @@
-const a = () => {
-  const aaa = {
-    a: 2
-  };
+import Parser from "./parser/Parser"
 
-  return Object.keys(aaa);
-};
+export default new Parser()
