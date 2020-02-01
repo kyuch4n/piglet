@@ -1,6 +1,6 @@
 {
-  "name": "piglet",
-  "version": "1.0.0",
+  "name": "awesome-piglet",
+  "version": "1.0.0-beta.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "repository": "https://github.com/kyuch4n/piglet",

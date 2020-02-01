@@ -1,6 +1,6 @@
 init;
 if (failure) {
-  throw error;
+  has error;
   break;
 }
 submit;

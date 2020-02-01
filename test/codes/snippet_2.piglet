@@ -1,11 +1,11 @@
-switch (a) {
-  case do1:
-    aaa;
+switch (num) {
+  case 1:
+    something for 1;
     break;
   case 2:
-    bbb;
+    something for 2;
   default:
-    ccc;
+    something default;
 }
 
-ddd;
+something last;

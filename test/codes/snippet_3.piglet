@@ -1,9 +1,9 @@
 if (a) {
-  aaa;
+  something for A;
 } else if (b) {
-  bbb;
+  something for B;
 } else {
-  ccc;
+  something else;
 }
 
-ddd;
+something last;
