@@ -1,0 +1,8 @@
+init; # this is a comment
+
+if (fetchError) {
+  throw error;
+  return;
+}
+
+submit;

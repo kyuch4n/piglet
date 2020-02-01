@@ -1,11 +1,15 @@
-class Parser {
+import Tokenizer from "../tokenizer/Tokenizer"
+
+export default class Parser {
+  private tokenizer: Tokenizer
+  private tokens: Array<Token> = []
+
   constructor() {
-    console.log(1)
+    this.tokenizer = new Tokenizer()
   }
 
-  parse() {
-
+  parse(code: string) {
+    this.tokens = this.tokenizer.parse(code)
+    return { tokens: this.tokens }
   }
 }
-
-export default Parser
