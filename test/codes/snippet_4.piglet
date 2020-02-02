@@ -1,0 +1,5 @@
+init;
+do {
+  retry;
+} while (failure)
+submit; # this is a comment

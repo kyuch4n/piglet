@@ -1,0 +1,11 @@
+switch (num) {
+  case 1:
+    something for 1;
+    break;
+  case 2:
+    something for 2;
+  default:
+    something default;
+}
+
+something last;

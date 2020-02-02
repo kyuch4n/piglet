@@ -1,0 +1,16 @@
+# file
+.DS_Store
+.npm-debug.log
+.npmignore
+.eslintrc.json
+.eslintignore
+.gitignore
+.prettierignore
+tsconfig.json
+tslint.json
+package-lock.json
+
+# folder
+/node_modules
+/src
+/test

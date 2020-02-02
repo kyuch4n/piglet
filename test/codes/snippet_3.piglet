@@ -1,0 +1,9 @@
+if (a) {
+  something for A;
+} else if (b) {
+  something for B;
+} else {
+  something else;
+}
+
+something last;
