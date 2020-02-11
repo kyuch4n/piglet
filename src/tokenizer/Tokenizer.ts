@@ -11,37 +11,37 @@ export default class Tokenizer {
     this.inputStream = new InputStream()
   }
 
-  isCommentStart(ch: string): boolean {
+  private isCommentStart(ch: string): boolean {
     return ch === "#"
   }
 
-  isWhiteSpace(ch: string): boolean {
+  private isWhiteSpace(ch: string): boolean {
     return " \t\n".indexOf(ch) >= 0
   }
 
-  isPunc(ch: string): boolean {
+  private isPunc(ch: string): boolean {
     return hasEnumValue(Punctuation, ch)
   }
 
-  isIdentifierStart(ch: string): boolean {
+  private isIdentifierStart(ch: string): boolean {
     return /[a-z0-9\u4e00-\u9fa5]/i.test(ch)
   }
 
-  readWhile(func: Function): string {
+  private readWhile(func: Function): string {
     if (this.inputStream.eof()) return ""
     if (func.call(this, this.inputStream.peek())) return ""
     return this.inputStream.next() + this.readWhile(func)
   }
 
-  isEndOfComment(ch: string): boolean {
+  private isEndOfComment(ch: string): boolean {
     return ch === "\n"
   }
 
-  isEndOfKeyword(ch: string): boolean {
+  private isEndOfKeyword(ch: string): boolean {
     return this.isCommentStart(ch) || this.isWhiteSpace(ch) || this.isPunc(ch)
   }
 
-  isEndOfNode(ch: string): boolean {
+  private isEndOfNode(ch: string): boolean {
     return this.isPunc(ch)
   }
 

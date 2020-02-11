@@ -2,8 +2,8 @@ export default class InputStream {
   private input: string = ""
   private position = 0
 
-  line = 1
-  column = 0
+  private line = 1
+  private column = 0
 
   set(input: string) {
     this.input = input
@@ -15,35 +15,35 @@ export default class InputStream {
   /**
    * returns the next value and also discards it from the stream
    */
-  next() {
-    const char = this.input.charAt(this.position++);
+  next(): string {
+    const char = this.input.charAt(this.position++)
 
     if (char === "\n")
       this.line++ , this.column = 0
     else
       this.column++
 
-    return char;
+    return char
   }
 
   /** 
    * returns the next value but without removing it from the stream
    */
-  peek() {
-    return this.input.charAt(this.position);
+  peek(): string {
+    return this.input.charAt(this.position)
   }
 
   /**
    * returns true if and only if there are no more values in the stream
    */
-  eof() {
-    return this.peek() === "";
+  eof(): boolean {
+    return this.peek() === ""
   }
 
   /**
    * does throw new Error(msg)
    */
   croak(msg: string) {
-    throw new Error(`${msg} (${this.line}:${this.column})`);
+    throw new Error(`${msg} (${this.line}:${this.column})`)
   }
 }

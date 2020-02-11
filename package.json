@@ -9,7 +9,7 @@
   "scripts": {
     "clean": "trash dist",
     "build": "run-s clean && gulp",
-    "watch": "run-s clean && gulp watch",
+    "watch": "gulp watch",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:tslint": "tslint --fix --project .",
