@@ -20,3 +20,9 @@ export enum Punctuation {
   COLON = ":",
   SEMICOLON = ";"
 }
+
+export enum TokenType {
+  PUNCTUATION = "punctuation",
+  NODE = "node",
+  KEYWORD = "keyword"
+}

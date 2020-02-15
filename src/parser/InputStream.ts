@@ -4,9 +4,8 @@ export default class InputStream {
   private tokens: Array<Token> = []
   private position = 0
 
-  set(tokens: Array<Token>) {
+  constructor(tokens: Array<Token>) {
     this.tokens = tokens
-    this.position = 0
   }
 
   /**
@@ -32,12 +31,5 @@ export default class InputStream {
    */
   eof(): boolean {
     return !this.peek()
-  }
-
-  /**
-   * does throw new Error(msg)
-   */
-  croak(msg: string, token: Token) {
-    throw new Error(`${msg}, token: ${token}`)
   }
 }

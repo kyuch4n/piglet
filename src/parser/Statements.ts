@@ -1,4 +1,4 @@
-class BaseStatement {
+export class BaseStatement {
   protected type: string
 
   constructor(type: string) {
@@ -6,7 +6,7 @@ class BaseStatement {
   }
 }
 
-class ConditionStatement extends BaseStatement {
+export class ConditionStatement extends BaseStatement {
   protected test: string = ""
   protected consequent: Array<BaseStatement> = []
 
@@ -30,21 +30,30 @@ export class Program extends BaseStatement {
   constructor() {
     super("prog")
   }
+
+  setConsequent(consequent: Array<BaseStatement>) {
+    this.consequent = consequent
+  }
+
+  getConsequent(): Array<BaseStatement> {
+    return this.consequent
+  }
 }
 
 export class NodeStatement extends BaseStatement {
-  constructor() {
+  private value: string
+
+  constructor(value: string) {
     super("node")
+    this.value = value
+  }
+
+  getValue(): string {
+    return this.value
   }
 }
 
-export class SwitchStatement extends BaseStatement {
-  constructor() {
-    super("switch")
-  }
-}
-
-export class BreakeStatement extends BaseStatement {
+export class BreakStatement extends BaseStatement {
   constructor() {
     super("break")
   }
@@ -53,6 +62,12 @@ export class BreakeStatement extends BaseStatement {
 export class ContinueStatement extends BaseStatement {
   constructor() {
     super("continue")
+  }
+}
+
+export class SwitchStatement extends BaseStatement {
+  constructor() {
+    super("switch")
   }
 }
 

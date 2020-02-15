@@ -1,6 +1,6 @@
 import Token from "./Token"
 import InputStream from "./InputStream"
-import { Keyword, Punctuation } from "./Definitions"
+import { Keyword, Punctuation, TokenType } from "./Definitions"
 import { hasEnumValue } from "../utils/EnumExtension"
 
 export default class Tokenizer {
@@ -62,19 +62,19 @@ export default class Tokenizer {
       }
 
       /** Punctuation */
-      else if (this.isPunc(ch)) this.tokens.push(new Token("punctuation", ch))
+      else if (this.isPunc(ch)) this.tokens.push(new Token(TokenType.PUNCTUATION, ch))
 
       /** Identifier */
       else if (this.isIdentifierStart(ch)) {
         const maybeKeyword = ch + this.readWhile(this.isEndOfKeyword)
 
         /** Keyword */
-        if (hasEnumValue(Keyword, maybeKeyword)) this.tokens.push(new Token("keyword", maybeKeyword))
+        if (hasEnumValue(Keyword, maybeKeyword)) this.tokens.push(new Token(TokenType.KEYWORD, maybeKeyword))
 
         /** Node */
         else {
           const node = (maybeKeyword + this.readWhile(this.isEndOfNode)).trim()
-          this.tokens.push(new Token("node", node))
+          this.tokens.push(new Token(TokenType.NODE, node))
         }
       }
 

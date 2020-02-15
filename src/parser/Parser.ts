@@ -1,13 +1,15 @@
 import Token from "../tokenizer/Token"
 import Tokenizer from "../tokenizer/Tokenizer"
+import { TokenType, Keyword } from "../tokenizer/Definitions"
 import InputStream from "./InputStream"
 
 import {
   Program,
-  // NodeStatement,
+  BaseStatement,
+  NodeStatement,
+  BreakStatement,
+  ContinueStatement,
   // SwitchStatement,
-  // BreakeStatement,
-  // ContinueStatement,
   // IfStatement,
   // CaseStatement,
   // WhileStatement,
@@ -15,32 +17,46 @@ import {
 } from "./Statements"
 
 export default class Parser {
-  private tokenizer: Tokenizer
-  private tokens: Array<Token> = []
-  private inputStream: InputStream
-
-  constructor() {
-    this.tokenizer = new Tokenizer()
-    this.inputStream = new InputStream()
+  private parseKeywords(keyword: string /**, inputStream: InputStream */): BaseStatement {
+    switch (keyword) {
+      case Keyword.BREAK:
+        return new BreakStatement()
+      case Keyword.CONTINUE:
+        return new ContinueStatement()
+      default:
+        throw new Error(`unknown keyword: ${keyword}`)
+    }
   }
 
-  private parseIf() {
-    
-  }
+  parse(code: string): Program
+  parse(tokens: Array<Token>): Array<BaseStatement>
+  parse(source: Array<Token> | string): Array<BaseStatement> | Program {
+    if (typeof source === "string") {
+      const tokenizer = new Tokenizer()
+      const tokens = tokenizer.parse(source)
 
-  parse(code: string) {
-    /** tokenizer */
-    this.tokens = this.tokenizer.parse(code)
-
-    /** parser to AST */
-    this.inputStream.set(this.tokens)
-    const program = new Program()
-
-    while (!this.inputStream.eof()) {
-      const token = this.inputStream.next()
+      const program = new Program()
+      program.setConsequent(this.parse(tokens))
+      return program
     }
 
-    console.log(program)
-    return program
+    const inputStream = new InputStream(source)
+    const ret: Array<BaseStatement> = []
+    while (!inputStream.eof()) {
+      const token = inputStream.next()
+
+      switch (token.getType()) {
+        case TokenType.NODE:
+          ret.push(new NodeStatement(token.getValue()))
+          break
+        case TokenType.KEYWORD:
+          ret.push(this.parseKeywords(token.getValue()))
+          break;
+        default:
+          /** skip */
+          break
+      }
+    }
+    return ret
   }
 }
