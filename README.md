@@ -6,7 +6,7 @@
 
 ## More Documents
 
-- [Part 1 - Examples](https://b.kyuchan.cn/2020/02/02/piglet-examples/)
-- [Part 2 - Tutorial](https://b.kyuchan.cn/2020/02/02/piglet-tutorial/)
-- [Part 3 - About Tokens](https://b.kyuchan.cn/2020/02/02/piglet-tokens/)
-- [Part 4 - About AST](https://b.kyuchan.cn/2020/02/02/piglet-ast/)
+- [Part 1 - Examples](https://kyuch4n.github.io/2020/02/02/piglet-examples/)
+- [Part 2 - Tutorial](https://kyuch4n.github.io/2020/02/02/piglet-tutorial/)
+- [Part 3 - About Tokens](https://kyuch4n.github.io/2020/02/02/piglet-tokens/)
+- [Part 4 - About AST](https://kyuch4n.github.io/2020/02/02/piglet-ast/)
