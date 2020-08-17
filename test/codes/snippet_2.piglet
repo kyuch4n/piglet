@@ -1,11 +1,11 @@
 switch (num) {
   case 1:
-    sth A;
+    something for 1;
     break;
   case 2:
-    sth B;
+    something for 2;
   default:
-    sth C;
+    something default;
 }
 
 something last;

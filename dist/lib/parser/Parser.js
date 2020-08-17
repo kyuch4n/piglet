@@ -26,9 +26,13 @@ var Parser = /*#__PURE__*/function () {
     key: "parse",
     value: function parse(code) {
       var tokenizer = new _Tokenizer["default"]();
-      var tokens = tokenizer.parse(code);
+      var tokens = tokenizer.parse(code); // TODO: parse 2 AST
+
       var program = new _Statements.Program();
-      return program;
+      return {
+        program: program,
+        tokens: tokens
+      };
     }
   }]);
 

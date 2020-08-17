@@ -15,6 +15,8 @@ export declare enum Punctuation {
     BRACE_R = "}",
     PAREN_L = "(",
     PAREN_R = ")",
+    BRACKET_L = "[",
+    BRACKET_R = "]",
     COLON = ":",
     SEMICOLON = ";"
 }

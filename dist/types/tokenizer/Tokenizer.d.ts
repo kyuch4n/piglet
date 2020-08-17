@@ -1,4 +1,4 @@
-import Token from "./Token";
+import Token from './Token';
 export default class Tokenizer {
     private tokens;
     private inputStream;
