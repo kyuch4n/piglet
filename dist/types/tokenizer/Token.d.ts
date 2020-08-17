@@ -1,4 +1,4 @@
-import { TokenType } from "./Definitions";
+import { TokenType } from './Definitions';
 export default class Token {
     private type;
     private value;

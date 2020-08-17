@@ -9,6 +9,7 @@ exports.Keyword = Keyword;
 
 (function (Keyword) {
   Keyword["IF"] = "if";
+  Keyword["ELIF"] = "elif";
   Keyword["ELSE"] = "else";
   Keyword["DO"] = "do";
   Keyword["WHILE"] = "while";
@@ -27,6 +28,8 @@ exports.Punctuation = Punctuation;
   Punctuation["BRACE_R"] = "}";
   Punctuation["PAREN_L"] = "(";
   Punctuation["PAREN_R"] = ")";
+  Punctuation["BRACKET_L"] = "[";
+  Punctuation["BRACKET_R"] = "]";
   Punctuation["COLON"] = ":";
   Punctuation["SEMICOLON"] = ";";
 })(Punctuation || (exports.Punctuation = Punctuation = {}));

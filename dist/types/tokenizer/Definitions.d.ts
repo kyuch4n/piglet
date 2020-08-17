@@ -1,5 +1,6 @@
 export declare enum Keyword {
     IF = "if",
+    ELIF = "elif",
     ELSE = "else",
     DO = "do",
     WHILE = "while",

@@ -13,9 +13,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var InputStream =
-/*#__PURE__*/
-function () {
+var InputStream = /*#__PURE__*/function () {
   function InputStream(tokens) {
     _classCallCheck(this, InputStream);
 
@@ -35,7 +33,7 @@ function () {
     value: function next() {
       return this.tokens[this.position++];
     }
-    /** 
+    /**
      * returns the next value but without removing it from the stream
      */
 

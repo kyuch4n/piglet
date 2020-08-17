@@ -23,9 +23,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Tokenizer =
-/*#__PURE__*/
-function () {
+var Tokenizer = /*#__PURE__*/function () {
   function Tokenizer() {
     _classCallCheck(this, Tokenizer);
 
@@ -39,12 +37,12 @@ function () {
   _createClass(Tokenizer, [{
     key: "isCommentStart",
     value: function isCommentStart(ch) {
-      return ch === "#";
+      return ch === '#';
     }
   }, {
     key: "isWhiteSpace",
     value: function isWhiteSpace(ch) {
-      return " \t\n".indexOf(ch) >= 0;
+      return ' \t\n'.indexOf(ch) >= 0;
     }
   }, {
     key: "isPunc",
@@ -59,14 +57,14 @@ function () {
   }, {
     key: "readWhile",
     value: function readWhile(func) {
-      if (this.inputStream.eof()) return "";
-      if (func.call(this, this.inputStream.peek())) return "";
+      if (this.inputStream.eof()) return '';
+      if (func.call(this, this.inputStream.peek())) return '';
       return this.inputStream.next() + this.readWhile(func);
     }
   }, {
     key: "isEndOfComment",
     value: function isEndOfComment(ch) {
-      return ch === "\n";
+      return ch === '\n';
     }
   }, {
     key: "isEndOfKeyword",
@@ -86,30 +84,36 @@ function () {
       while (!this.inputStream.eof()) {
         var ch = this.inputStream.next();
 
-        if (this.isCommentStart(ch)) {
-          /** skip */
-          this.readWhile(this.isEndOfComment);
+        if (this.isWhiteSpace(ch)) {
+          continue;
         }
-        /** Whitespace */
-        else if (this.isWhiteSpace(ch)) {}
-          /** skip */
 
-          /** Punctuation */
-          else if (this.isPunc(ch)) this.tokens.push(new _Token["default"](_Definitions.TokenType.PUNCTUATION, ch));
-            /** Identifier */
-            else if (this.isIdentifierStart(ch)) {
-                var maybeKeyword = ch + this.readWhile(this.isEndOfKeyword);
-                /** Keyword */
+        if (this.isCommentStart(ch)) {
+          this.readWhile(this.isEndOfComment);
+          continue;
+        }
 
-                if ((0, _EnumExtension.hasEnumValue)(_Definitions.Keyword, maybeKeyword)) this.tokens.push(new _Token["default"](_Definitions.TokenType.KEYWORD, maybeKeyword));
-                /** Node */
-                else {
-                    var node = (maybeKeyword + this.readWhile(this.isEndOfNode)).trim();
-                    this.tokens.push(new _Token["default"](_Definitions.TokenType.NODE, node));
-                  }
-              }
-              /** Can't handle */
-              else this.inputStream.croak("Can't handle character: ".concat(ch));
+        if (this.isPunc(ch)) {
+          this.tokens.push(new _Token["default"](_Definitions.TokenType.PUNCTUATION, ch));
+          continue;
+        }
+
+        if (this.isIdentifierStart(ch)) {
+          var maybeKeyword = ch + this.readWhile(this.isEndOfKeyword); // Keyword
+
+          if ((0, _EnumExtension.hasEnumValue)(_Definitions.Keyword, maybeKeyword)) {
+            this.tokens.push(new _Token["default"](_Definitions.TokenType.KEYWORD, maybeKeyword));
+            continue;
+          } // Node
+
+
+          var node = (maybeKeyword + this.readWhile(this.isEndOfNode)).trim();
+          this.tokens.push(new _Token["default"](_Definitions.TokenType.NODE, node));
+          continue;
+        } // Default: Unable to handle
+
+
+        this.inputStream.croak("Can't handle character: ".concat(ch));
       }
 
       return this.tokens;

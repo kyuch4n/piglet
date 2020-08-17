@@ -13,13 +13,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var InputStream =
-/*#__PURE__*/
-function () {
+var InputStream = /*#__PURE__*/function () {
   function InputStream() {
     _classCallCheck(this, InputStream);
 
-    _defineProperty(this, "input", "");
+    _defineProperty(this, "input", '');
 
     _defineProperty(this, "position", 0);
 
@@ -45,10 +43,10 @@ function () {
     value: function next() {
       var _char = this.input.charAt(this.position++);
 
-      if (_char === "\n") this.line++, this.column = 0;else this.column++;
+      if (_char === '\n') this.line++, this.column = 0;else this.column++;
       return _char;
     }
-    /** 
+    /**
      * returns the next value but without removing it from the stream
      */
 
@@ -64,7 +62,7 @@ function () {
   }, {
     key: "eof",
     value: function eof() {
-      return this.peek() === "";
+      return this.peek() === '';
     }
     /**
      * does throw new Error(msg)

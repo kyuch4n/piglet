@@ -1,3 +1,3 @@
-import Parser from "./parser/Parser"
+import Parser from './parser/Parser';
 
-export default new Parser()
+export default new Parser();

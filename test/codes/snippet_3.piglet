@@ -1,9 +1,9 @@
 if (a) {
-  something for A;
-} else if (b) {
-  something for B;
+  sth A;
+} elif (b) {
+  sth B;
 } else {
-  something else;
+  sth C;
 }
 
-something last;
+sth;
